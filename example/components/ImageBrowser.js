@@ -86,7 +86,7 @@ export default class ImageBrowser extends React.Component {
   prepareCallback = () => {
     let { selected, photos } = this.state
     const selectedPhotos = selected.map(i => photos[i])
-    const assetsInfo = Promise.all(selectedPhotos.map(i => MediaLibrary.getAssetInfoAsync(i)))
+    const assetsInfo = Promise.all(selectedPhotos.map(i => MediaLibrary.getAssetInfoAsync(i, {shouldDownloadFromNetwork: true})))
     this.props.callback(assetsInfo)
   }
 
